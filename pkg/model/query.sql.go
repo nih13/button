@@ -7,15 +7,18 @@ package model
 
 import (
 	"context"
-	"database/sql"
 )
 
 const getUser = `-- name: GetUser :one
-SELECT id, username FROM users
-WHERE id = $1 LIMIT 1
+SELECT
+    id, username
+FROM
+    users
+WHERE
+    id = $1
 `
 
-func (q *Queries) GetUser(ctx context.Context, id sql.NullInt32) (User, error) {
+func (q *Queries) GetUser(ctx context.Context, id int32) (User, error) {
 	row := q.db.QueryRowContext(ctx, getUser, id)
 	var i User
 	err := row.Scan(&i.ID, &i.Username)

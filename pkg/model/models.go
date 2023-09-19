@@ -9,18 +9,18 @@ import (
 )
 
 type PressHistory struct {
-	ID            sql.NullInt32
+	ID            int32
 	UserID        sql.NullInt64
 	UnixTimestamp sql.NullInt64
 }
 
 type Reward struct {
-	ID     sql.NullInt32
+	ID     int32
 	UserID sql.NullInt64
 	Reward sql.NullInt64
 }
 
 type User struct {
-	ID       sql.NullInt32
+	ID       int32
 	Username sql.NullString
 }
